@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { BarChart3, ChefHat, ClipboardList, LogOut, ReceiptText, Settings, Table2, Wine } from "lucide-react";
+import { BarChart3, ChefHat, ClipboardList, LogOut, ReceiptText, Settings, Table2, Wine, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useAuth } from "@/context/AuthContext";
 import type { Role } from "@/lib/api";
@@ -28,15 +28,26 @@ const quickLinks: Array<{ href: string; label: string; icon: typeof Table2; role
   { href: "/admin?tab=overview", label: "Sales reports", icon: BarChart3, roles: ["admin"] }
 ];
 
-export function Sidebar() {
+export function Sidebar({ className, onClose }: { className?: string; onClose?: () => void } = {}) {
   const { user, logout } = useAuth();
   const visibleQuickLinks = quickLinks.filter((link) => user && link.roles.includes(user.role));
 
   return (
-    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-hidden border-r border-white/10 bg-forest-900 p-4 text-white lg:flex xl:w-72">
-      <div className="shrink-0">
-        <img src="/royal-spice-brand.svg" alt="Shiva Royal Spice Restaurant and Bar" className="h-auto w-full object-contain" />
-        <p className="mt-3 truncate text-sm font-black uppercase text-gold-300">Table Ordering System</p>
+    <aside className={className || "sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-hidden border-r border-white/10 bg-forest-900 p-4 text-white lg:flex xl:w-72"}>
+      <div className="flex shrink-0 items-start justify-between">
+        <div className="min-w-0 flex-1">
+          <img src="/royal-spice-brand.svg" alt="Shiva Royal Spice Restaurant and Bar" className="h-auto w-full object-contain" />
+          <p className="mt-3 truncate text-sm font-black uppercase text-gold-300">Table Ordering System</p>
+        </div>
+        {onClose && (
+          <button
+            type="button"
+            className="ml-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-gold-300"
+            onClick={onClose}
+          >
+            <X size={20} />
+          </button>
+        )}
       </div>
       <div className="mt-5 shrink-0 rounded-[8px] bg-white/10 p-4">
         <p className="truncate font-black">{user?.name}</p>
@@ -54,6 +65,7 @@ export function Sidebar() {
                 key={link.href}
                 to={link.href}
                 end={link.href === "/admin"}
+                onClick={onClose}
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-[8px] px-4 py-3 text-sm font-black transition ${
                     isActive ? "bg-gold-300 text-forest-900" : "text-white/80 hover:bg-white/10 hover:text-white"
@@ -73,6 +85,7 @@ export function Sidebar() {
               <Link
                 key={href}
                 to={href}
+                onClick={onClose}
                 className="rounded-[8px] bg-white/10 p-3 text-left transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300"
               >
                 <Icon size={16} />
@@ -81,7 +94,14 @@ export function Sidebar() {
             ))}
           </div>
         ) : null}
-        <Button variant="ghost" className="w-full border-white/20 bg-white/10 text-white hover:bg-white/15" onClick={logout}>
+        <Button
+          variant="ghost"
+          className="w-full border-white/20 bg-white/10 text-white hover:bg-white/15"
+          onClick={() => {
+            logout();
+            onClose?.();
+          }}
+        >
           <LogOut size={16} />
           Logout
         </Button>
