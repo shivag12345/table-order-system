@@ -58,3 +58,4 @@ docker compose exec backend npm run seed
 ```
 
 The frontend image builds the Vite app and serves it with Nginx. The backend image runs the Express API, and MongoDB uses the official `mongo:7` image.
+# table-order-system
