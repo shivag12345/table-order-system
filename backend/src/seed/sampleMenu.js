@@ -110,6 +110,116 @@ export const menuItems = [
     foodType: "veg",
     tags: ["sweet"],
     prepTime: 6
+  },
+  {
+    name: "Crispy Corn Chaat",
+    description: "Golden corn kernels tossed with onions, lime, chaat masala, and fresh coriander.",
+    categoryName: "Starters",
+    price: 190,
+    foodType: "veg",
+    tags: ["corn", "chaat", "crunchy"],
+    prepTime: 12
+  },
+  {
+    name: "Malai Chicken Tikka",
+    description: "Tender chicken marinated with cream, cheese, and gentle tandoori spices.",
+    categoryName: "Starters",
+    price: 340,
+    foodType: "non-veg",
+    tags: ["chicken", "tandoor", "creamy"],
+    prepTime: 22
+  },
+  {
+    name: "Idli Sambar",
+    description: "Steamed rice cakes served with aromatic sambar and coconut chutney.",
+    categoryName: "South Indian",
+    price: 120,
+    foodType: "veg",
+    tags: ["idli", "breakfast", "sambar"],
+    prepTime: 10
+  },
+  {
+    name: "Masala Uttapam",
+    description: "Thick South Indian pancake topped with tomato, onion, chilies, and coriander.",
+    categoryName: "South Indian",
+    price: 170,
+    foodType: "veg",
+    tags: ["uttapam", "vegetarian", "south indian"],
+    prepTime: 15
+  },
+  {
+    name: "Paneer Butter Masala",
+    description: "Paneer cubes in a silky tomato, butter, and cashew gravy.",
+    categoryName: "North Indian",
+    price: 310,
+    foodType: "veg",
+    tags: ["paneer", "curry", "popular"],
+    prepTime: 20,
+    isFeatured: true
+  },
+  {
+    name: "Kadai Chicken",
+    description: "Chicken cooked with roasted peppers, onions, and freshly ground kadai spices.",
+    categoryName: "North Indian",
+    price: 370,
+    foodType: "non-veg",
+    tags: ["chicken", "spicy", "curry"],
+    prepTime: 25
+  },
+  {
+    name: "Garlic Naan",
+    description: "Soft tandoor-baked bread brushed with garlic butter and coriander.",
+    categoryName: "North Indian",
+    price: 70,
+    foodType: "veg",
+    tags: ["bread", "naan", "tandoor"],
+    prepTime: 8
+  },
+  {
+    name: "Veg Pulao",
+    description: "Fragrant basmati rice with seasonal vegetables, whole spices, and herbs.",
+    categoryName: "Biryani",
+    price: 220,
+    foodType: "veg",
+    tags: ["rice", "vegetarian", "mild"],
+    prepTime: 18
+  },
+  {
+    name: "Mutton Dum Biryani",
+    description: "Slow-cooked basmati rice layered with tender mutton, saffron, and fried onions.",
+    categoryName: "Biryani",
+    price: 460,
+    foodType: "non-veg",
+    tags: ["mutton", "rice", "signature"],
+    prepTime: 35,
+    isFeatured: true
+  },
+  {
+    name: "Masala Chaas",
+    description: "Chilled spiced buttermilk blended with roasted cumin, mint, and ginger.",
+    categoryName: "Beverages",
+    price: 80,
+    foodType: "veg",
+    tags: ["buttermilk", "cooler", "refreshing"],
+    prepTime: 4
+  },
+  {
+    name: "Filter Coffee",
+    description: "Traditional South Indian coffee with a rich, aromatic froth.",
+    categoryName: "Beverages",
+    price: 95,
+    foodType: "veg",
+    tags: ["coffee", "hot", "south indian"],
+    prepTime: 5
+  },
+  {
+    name: "Kulfi Falooda",
+    description: "Pistachio kulfi with vermicelli, rose syrup, basil seeds, and nuts.",
+    categoryName: "Desserts",
+    price: 160,
+    foodType: "veg",
+    tags: ["kulfi", "ice cream", "sweet"],
+    prepTime: 7
   }
 ];
 

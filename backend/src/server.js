@@ -10,7 +10,9 @@ import { fileURLToPath } from "url";
 import { Server } from "socket.io";
 import { connectDB } from "./config/db.js";
 import { ensureSampleBarItems } from "./seed/ensureSampleBarItems.js";
+import { ensureSampleMenu } from "./seed/ensureSampleMenu.js";
 import { ensureSampleStaffUsers } from "./seed/ensureSampleStaffUsers.js";
+import { ensureSampleTables } from "./seed/ensureSampleTables.js";
 import authRoutes from "./routes/authRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import foodRoutes from "./routes/foodRoutes.js";
@@ -139,9 +141,20 @@ io.on("connection", (socket) => {
 
 connectDB()
   .then(async () => {
-    const [barSeedResult, staffSeedResult] = await Promise.all([ensureSampleBarItems(), ensureSampleStaffUsers()]);
+    const [barSeedResult, menuSeedResult, staffSeedResult, tableSeedResult] = await Promise.all([
+      ensureSampleBarItems(),
+      ensureSampleMenu(),
+      ensureSampleStaffUsers(),
+      ensureSampleTables()
+    ]);
     if (barSeedResult.inserted > 0) {
       console.log(`Seeded ${barSeedResult.inserted} sample bar items.`);
+    }
+    if (menuSeedResult.itemsInserted > 0) {
+      console.log(`Seeded ${menuSeedResult.itemsInserted} sample menu items.`);
+    }
+    if (tableSeedResult.inserted > 0) {
+      console.log(`Seeded ${tableSeedResult.inserted} sample tables.`);
     }
     if (staffSeedResult.created > 0 || staffSeedResult.updated > 0) {
       console.log(`Sample staff users ready: ${staffSeedResult.created} created, ${staffSeedResult.updated} updated.`);
